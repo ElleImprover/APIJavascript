@@ -1,43 +1,42 @@
-//var btn =document.querySelector('btnClick');
 var btn= document.getElementById("btnClick")
-btn.addEventListener('click',()=> {
-//  var fluffy=  GetFluffy();
-  //var imgSrc = document.querySelector('fImg');
-  var imgSrc = document.getElementById('fImg');
-  //imgSrc.src = fluffy.url;
-  var imgLink = GetFluffy();
-//*ED-Need to remove the slashes;
-console.log(imgLink);
-  imgSrc.src=CorrectSlashes(imgLink);
-  imgSrc.style.display="inline-block"
-});
+btn.addEventListener('click',()=>
+ {
+  var img = document.getElementById('fImg');
 
-function GetFluffy()
-{
-   // fetch("https://randomfox.ca/floof/")
-/*
-   fetch('https://random.dog/woof.json')
-    .then((response)=>{return response.json().url;
-        })*/
-       // .then((data)=> {
-
-         //return data.image;
-       //   return data.url;
-       // })
-
-       //ED- for Testing
-       fetch('https://random.dog/woof.json')
-            .then((response) => {
-                return response.json();
-            })
+  function getFluffy(method) {  
+    //fetch('https://random.dog/woof.json')
+   fetch('https://randomfox.ca/floof/')
+           .then((response) => {
+            return response.json();
+        })
+        .then(method);
 }
+
+getFluffy((data) =>
+    {
+    //img.src=CorrectSlashes(data.url);
+    img.src=CorrectSlashes(data.image);
+    img.style.display="inline-block"
+    });
+ }
+);
+/*
+function GetFluffy(method)
+{
+   // fetch('https://random.dog/woof.json')
+   fetch('https://randomfox.ca/floof/')
+    .then((response) => {
+        return response.json();
+    })
+    .then(method);
+}*/
 function CorrectSlashes(x){
 
-    if(x.includes("\\")){ 
+    if(x.includes("\\")) { 
       x = x.replace("//","");
-     return x; }
+      return x;  }
     else
-        return x;
+      return x;
 }
 
 
