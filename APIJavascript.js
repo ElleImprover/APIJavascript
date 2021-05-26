@@ -14,8 +14,7 @@ btn.addEventListener('click',()=>
 
 getFluffy((data) =>
     {
-    //img.src=CorrectSlashes(data.url);
-    img.src=CorrectSlashes(data.image);
+    img.src=data.image;
     img.style.display="inline-block"
     });
  }
@@ -29,7 +28,7 @@ function GetFluffy(method)
         return response.json();
     })
     .then(method);
-}*/
+}
 function CorrectSlashes(x){
 
     if(x.includes("\\")) { 
@@ -38,5 +37,5 @@ function CorrectSlashes(x){
     else
       return x;
 }
-
+*/
 
